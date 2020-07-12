@@ -24,7 +24,7 @@ body {
   align-items: center;
   flex-direction: column;
   font-size: 3rem;
-  color: white;
+  color: #ee6c4d;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 @media (max-width: 500px) {
@@ -95,7 +95,7 @@ body {
 }
 @media not all and (pointer: coarse) {
   .container .game-box .answers .answer:hover {
-    background-color: #f0552f;
+    background-color: #f39a83;
   }
 }
 .container .game-box .answers .correct {
@@ -108,6 +108,9 @@ body {
   .container .game-box {
     width: 100%;
     padding: 30px 10px;
+  }
+  .container .game-box .question {
+    font-size: 0.8rem;
   }
 }
 .container .control {

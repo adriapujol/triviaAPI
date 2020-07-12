@@ -4,6 +4,7 @@ const dataController = (()=> {
 
     /* Question class
         @param: question ID: number
+                category: string
                 Question: string
                 Possible answers: array string
                 answer: string
@@ -97,25 +98,7 @@ const UIController = (()=> {
 
     return {
         
-         getDOMstrings: () => DOMstrings,
-
-        //  setGame: (gameBox, game) => {
-        //     gameBox.innerHTML = `<div class="scoreboard">
-        //                             <div class="countdown" id="countdown"></div>
-        //                             <div class="score">${game.score}/${game.questions.length}</div>
-        //                         </div>
-        //                         <div class="question" id="question">
-        //                         now let's see
-        //                         </div>
-        //                         <div class="answers" id="answers">
-        //                                 <!-- <button class="answer">Answer 1</button>
-        //                                 <button class="answer">Answer 2</button>
-        //                                 <button class="answer">Answer 3</button>
-        //                                 <button class="answer">Answer 4</button> -->
-        //                         </div>
-        //                         <button class="control next hide" id="next">Next</button>`
-
-        //  },
+        getDOMstrings: () => DOMstrings,
 
         setScore: (score, game) => {
             score.innerHTML = `Score: ${game.score}/${game.questions.length}`;
