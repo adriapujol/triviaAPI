@@ -35,7 +35,7 @@ const dataController = (()=> {
                index,
                question.category,
                question.question,
-               options.sort(() => Math.random - 0.5),
+               options.sort(() => Math.random() - 0.5),
                correct,
                false
            )
