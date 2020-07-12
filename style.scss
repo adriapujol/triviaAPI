@@ -38,7 +38,7 @@ body {
         width: 100%;
         @include centerThings();
         font-size: 3rem;
-        color: white;
+        color: $color3;
         text-shadow: 2px 2px 2px rgb(0, 0, 0, 0.5);
         @media (max-width: 500px) {
             font-size: 2rem;
@@ -61,7 +61,7 @@ body {
             @media (max-width: 500px) {
                 font-size: 1.5rem;
             
-        }
+            }
 
             .before-score {
                 color: $color5;
@@ -109,17 +109,9 @@ body {
                     outline: none;
                 }
 
-                //   &:hover {
-                //     background-color: $color4;
-                // }
-                // @media (min-width: 500px) {
-                //     &:hover {
-                //         background-color: $color4;
-                //     }
-                // }
                 @media not all and (pointer: coarse) {
                     &:hover {
-                        background-color: $color4;
+                        background-color: $color5;
                     }
                 }
             
@@ -138,6 +130,10 @@ body {
                 // height: 100%;
                 width: 100%;
                 padding: 30px 10px;
+
+                .question {
+                    font-size: 0.8rem;
+                }
             
         }
 
