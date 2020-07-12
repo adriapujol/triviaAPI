@@ -6,11 +6,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Lato", sans-serif;
+  color: white;
 }
 
 .container {
   height: 100vh;
-  background-color: #caf0f8;
+  background-color: #050608;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +33,7 @@ body {
   }
 }
 .container .game-box {
-  background-color: white;
+  background-color: #424040;
   padding: 50px;
   display: flex;
   justify-content: center;
@@ -46,7 +47,7 @@ body {
   align-items: center;
   flex-direction: column;
   font-size: 3rem;
-  color: #679b9b;
+  color: #f5d057;
 }
 @media (max-width: 500px) {
   .container .game-box .scoreboard {
@@ -54,10 +55,24 @@ body {
   }
 }
 .container .game-box .scoreboard .before-score {
+  color: #f39a83;
   font-size: 1.5rem;
+  margin-bottom: 2em;
 }
 .container .game-box .final {
-  color: #f5d057;
+  color: #f0552f;
+}
+.container .game-box .category {
+  color: #f39a83;
+  margin-top: 1.5em;
+  margin: 0;
+}
+.container .game-box .question h2 {
+  margin-top: 0;
+}
+.container .game-box .question .question-number {
+  font-size: 1.5em;
+  color: #f39a83;
 }
 .container .game-box .answers {
   display: flex;
@@ -70,7 +85,7 @@ body {
   height: 60px;
   min-width: 300px;
   margin: 5px;
-  border: 2px solid #b8ebf5;
+  border: 2px solid #ee6c4d;
   border-radius: 30px;
   background-color: white;
   cursor: pointer;
@@ -80,7 +95,7 @@ body {
 }
 @media not all and (pointer: coarse) {
   .container .game-box .answers .answer:hover {
-    background-color: #f5d057;
+    background-color: #f0552f;
   }
 }
 .container .game-box .answers .correct {
@@ -96,16 +111,16 @@ body {
   }
 }
 .container .control {
+  color: white;
   padding: 15px;
   margin: 20px;
-  background-color: white;
+  background-color: #424040;
   cursor: pointer;
   border-radius: 15px;
-  border: 3px solid #b8ebf5;
+  border: 3px solid #ee6c4d;
 }
 .container .control:hover {
-  background-color: #b8ebf5;
-  color: white;
+  background-color: #ee6c4d;
 }
 .container .control:focus {
   outline: none;
