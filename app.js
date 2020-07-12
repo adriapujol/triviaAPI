@@ -35,7 +35,7 @@ const dataController = (()=> {
                index,
                question.category,
                question.question,
-               options.sort(() => Math.random - 0.5),
+               options.sort(() => Math.random() - 0.5),
                correct,
                false
            )
@@ -186,6 +186,13 @@ const controller = ((dataCtrl, UIctrl)=> {
                 currentQuestion.answered = true;
             } else {
                 userAnswer.classList.add(DOM.wrong);
+                for (let i = 0; i<game.questions.length; i++) {
+                    let correctAnswer = document.getElementById(`answer-${i}`); 
+                    if (currentQuestion.answer === correctAnswer.textContent ) {
+                        correctAnswer.classList.add(DOM.correct);
+                        break;
+                    }
+                }
                 currentQuestion.answered = true;
             }
         }
