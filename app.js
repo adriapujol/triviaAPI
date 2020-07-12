@@ -22,23 +22,47 @@ const dataController = (()=> {
 
     //Create questions
 
-    const question1 = new Question(1, 'For how long can a snail sleep?', ['12 hours', '1 week', '6 months', '3 years'], '3 years');
-    const question2 = new Question(2, 'How many penises does a shark have?', ['2', '1', '69', 'What is a penis?'], '2');
-    const question3 = new Question(3, "Where is the heart of a shrimp located?", ['Chest', 'Head', 'Body', 'Penis'], 'Head');
-    const question4 = new Question(4, "How many noses does a slug have?", ["1", "4", "3", "0"], "4");
-    const question5 = new Question(5, 'Which one is bigger?', ["Ostrich's eye", "Ostrich's brain"], "Ostrich's eye");
-    const question6 = new Question(6, "What is a rhino's horn made of?", ['Ivori', 'Hair', 'You dreams and hopes', 'Definetly a penis'], 'Hair');
-    const question7 = new Question(7, 'Can a kangaroo fart?', ['Yes', 'No', 'Only after eating Taco Bell'], 'No');
-    const question8 = new Question(8, "How many vaginas does female Koala Bears have?", ["1", "2", "0", "4"], "2");
-    const question9 = new Question(9, 'Are dolphins the worst?', ['Yes! F*ck those rapist!', 'Not at all', 'Flipper was good so they are cool', 'Flipper sucks too'], 'Yes! F*ck those rapist!');
-    const question10 = new Question(10, "What is the take away of this?", ["No idea, I have the brain of an ostrich", "F*ck the dolphins", "Rhino's horns are lame", "Sharks and female Koalas are a perfect match"], "Sharks and female Koalas are a perfect match");
+    // const question1 = new Question(1, 'For how long can a snail sleep?', ['12 hours', '1 week', '6 months', '3 years'], '3 years');
+    // const question2 = new Question(2, 'How many penises does a shark have?', ['2', '1', '69', 'What is a penis?'], '2');
+    // const question3 = new Question(3, "Where is the heart of a shrimp located?", ['Chest', 'Head', 'Body', 'Penis'], 'Head');
+    // const question4 = new Question(4, "How many noses does a slug have?", ["1", "4", "3", "0"], "4");
+    // const question5 = new Question(5, 'Which one is bigger?', ["Ostrich's eye", "Ostrich's brain"], "Ostrich's eye");
+    // const question6 = new Question(6, "What is a rhino's horn made of?", ['Ivori', 'Hair', 'You dreams and hopes', 'Definetly a penis'], 'Hair');
+    // const question7 = new Question(7, 'Can a kangaroo fart?', ['Yes', 'No', 'Only after eating Taco Bell'], 'No');
+    // const question8 = new Question(8, "How many vaginas does female Koala Bears have?", ["1", "2", "0", "4"], "2");
+    // const question9 = new Question(9, 'Are dolphins the worst?', ['Yes! F*ck those rapist!', 'Not at all', 'Flipper was good so they are cool', 'Flipper sucks too'], 'Yes! F*ck those rapist!');
+    // const question10 = new Question(10, "What is the take away of this?", ["No idea, I have the brain of an ostrich", "F*ck the dolphins", "Rhino's horns are lame", "Sharks and female Koalas are a perfect match"], "Sharks and female Koalas are a perfect match");
+
+    //GET API QUESTIONS
+   //GET API QUESTIONS
+   const url = 'https://opentdb.com/api.php?amount=10';
+
+   const getQuestions = async () => {
+       const response = await fetch(url);
+       console.log(response);
+       const data = await response.json();
+       game.questions = data.results.map((question, index) => {
+           const correct = question.correct_answer;
+           const options = [...question.incorrect_answers, correct];
+
+           return new Question(
+               index,
+               question.question,
+               options.sort(() => Math.random - 0.5),
+               correct,
+               false
+           )
+
+       });
+   }
+
 
     
     //Game questions + score;
 
     const game = {
         score: 0,
-        questions: [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10],
+        questions: []
     }
 
     return {
@@ -52,6 +76,8 @@ const dataController = (()=> {
         addScore: ()=> game.score++,
 
         getGame: () => game,
+
+        getQuestions: () => getQuestions(),
 
     }
 
@@ -147,6 +173,7 @@ const controller = ((dataCtrl, UIctrl)=> {
 
     const startGame = () => {
         //Start game
+        dataCtrl.getQuestions();
         btnStart.addEventListener('click', renderGame);
         choices.addEventListener('click', checkAnswer);
         btnNext.addEventListener('click', nextQuestion);
