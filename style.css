@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.container {
+  height: 100vh;
+  background-color: #caf0f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container h1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 3rem;
+  color: white;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 500px) {
+  .container h1 {
+    font-size: 2rem;
+  }
+}
+.container .game-box {
+  background-color: white;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container .game-box .scoreboard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 3rem;
+  color: #679b9b;
+}
+@media (max-width: 500px) {
+  .container .game-box .scoreboard {
+    font-size: 1.5rem;
+  }
+}
+.container .game-box .scoreboard .before-score {
+  font-size: 1.5rem;
+}
+.container .game-box .final {
+  color: #f5d057;
+}
+.container .game-box .answers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.container .game-box .answers .answer {
+  height: 60px;
+  min-width: 300px;
+  margin: 5px;
+  border: 2px solid #b8ebf5;
+  border-radius: 30px;
+  background-color: white;
+  cursor: pointer;
+}
+.container .game-box .answers .answer:focus {
+  outline: none;
+}
+@media not all and (pointer: coarse) {
+  .container .game-box .answers .answer:hover {
+    background-color: #f5d057;
+  }
+}
+.container .game-box .answers .correct {
+  background-color: #71e07a;
+}
+.container .game-box .answers .wrong {
+  background-color: #f07f7b;
+}
+@media (max-width: 500px) {
+  .container .game-box {
+    width: 100%;
+    padding: 30px 10px;
+  }
+}
+.container .control {
+  padding: 15px;
+  margin: 20px;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 15px;
+  border: 3px solid #b8ebf5;
+}
+.container .control:hover {
+  background-color: #b8ebf5;
+  color: white;
+}
+.container .control:focus {
+  outline: none;
+}
+.container .hide {
+  display: none;
+}
+
+/*# sourceMappingURL=style.css.map */

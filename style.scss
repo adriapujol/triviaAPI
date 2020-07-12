@@ -1,0 +1,151 @@
+$color1: #caf0f8;
+$color2: white;
+$color3: #b8ebf5;
+$color4: #f5d057;
+$color5: #679b9b;
+$correct: #71e07a;
+$wrong: #f07f7b;
+
+@mixin centerThings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+
+
+
+}
+
+
+.container {
+    height: 100vh;
+    background-color: $color1;
+    @include centerThings();   
+    
+    h1 {
+        width: 100%;
+        @include centerThings();
+        font-size: 3rem;
+        color: white;
+        text-shadow: 2px 2px 2px rgb(0, 0, 0, 0.5);
+        @media (max-width: 500px) {
+            font-size: 2rem;
+        
+    }
+    }
+    
+    .game-box {
+        background-color: $color2;
+        // width: 80%;
+        padding: 50px;
+        @include centerThings();
+
+        .scoreboard {
+            width: 100%;
+            @include centerThings();
+            font-size: 3rem;
+            color: $color5; 
+
+            @media (max-width: 500px) {
+                font-size: 1.5rem;
+            
+        }
+
+            .before-score {
+                font-size: 1.5rem;
+            }
+
+        }
+        .final {
+            color: $color4;
+        }
+        .answers {
+            @include centerThings();
+            width: 100%;
+            .answer {
+                height: 60px;
+                min-width: 300px;
+                margin: 5px;
+                border: 2px solid $color3;
+                border-radius: 30px;
+                background-color: white;
+                cursor: pointer;
+
+                &:focus {
+                    outline: none;
+                }
+
+                //   &:hover {
+                //     background-color: $color4;
+                // }
+                // @media (min-width: 500px) {
+                //     &:hover {
+                //         background-color: $color4;
+                //     }
+                // }
+                @media not all and (pointer: coarse) {
+                    &:hover {
+                        background-color: $color4;
+                    }
+                }
+            
+            }
+            .correct {
+                background-color: $correct;
+            }
+            .wrong {
+                background-color: $wrong;
+            }
+
+
+        }
+
+        @media (max-width: 500px) {
+                // height: 100%;
+                width: 100%;
+                padding: 30px 10px;
+            
+        }
+
+    }
+
+
+    .control {
+
+            padding: 15px;
+            margin: 20px;
+            background-color: $color2;
+            cursor: pointer;
+            border-radius: 15px;
+            border: 3px solid $color3;
+            &:hover {
+                background-color: $color3;
+                color: white;
+            }
+            
+            &:focus {
+                outline: none;
+              } 
+
+    }
+
+
+    .hide {
+        display: none;
+    }
+
+
+}
+
+
