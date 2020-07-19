@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  height: 100vh;
+  min-height: 100vh;
   background-color: #050608;
   display: flex;
   justify-content: center;
@@ -95,7 +95,7 @@ body {
 }
 @media not all and (pointer: coarse) {
   .container .game-box .answers .answer:hover {
-    background-color: #f39a83;
+    border: 7px solid #f5d057;
   }
 }
 .container .game-box .answers .correct {
