@@ -104,6 +104,9 @@ body {
 .container .game-box .answers .wrong {
   background-color: #f07f7b;
 }
+.container .game-box .next-button-box {
+  min-height: 100px;
+}
 @media (max-width: 500px) {
   .container .game-box {
     width: 100%;
