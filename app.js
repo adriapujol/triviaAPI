@@ -95,6 +95,7 @@ const UIController = (()=> {
         wrong: 'wrong',
         final: 'final',
         category: 'category',
+        nextBtnBox: 'next-button-box',
 
     }
 
@@ -147,8 +148,10 @@ const controller = ((dataCtrl, UIctrl)=> {
           question = document.getElementById(DOM.question),
           choices = document.getElementById(DOM.choices),
           final = document.getElementById(DOM.final),
-          btnNext = document.getElementById(DOM.btnNext);
-          category = document.getElementById(DOM.category);
+          btnNext = document.getElementById(DOM.btnNext),
+          category = document.getElementById(DOM.category),
+          nextBtnBox = document.getElementById(DOM.nextBtnBox);
+
           
     let answersCount = 0;
 
@@ -166,6 +169,7 @@ const controller = ((dataCtrl, UIctrl)=> {
         resetGame();
         btnStart.classList.add(DOM.hide);
         gameBox.classList.remove(DOM.hide);
+        nextBtnBox.classList.remove(DOM.hide);
         UIctrl.setScore(score, game);
         displayQuestion();
     }
@@ -227,6 +231,7 @@ const controller = ((dataCtrl, UIctrl)=> {
         let span = document.createElement('span');
         const bestScore = game.questions.length;
 
+        nextBtnBox.classList.add(DOM.hide);
         if(game.score < bestScore/2) {
             span.innerHTML = "That wasn't that impressive";
         } else if ( game.score === bestScore) {
