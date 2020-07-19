@@ -24,9 +24,11 @@ const dataController = (()=> {
    //GET API QUESTIONS
    
    const getQuestions = async () => {
-       const url = 'https://opentdb.com/api.php?amount=10';
+       const numQuestions = 10;
+       const url = `https://opentdb.com/api.php?amount=${numQuestions}`;
        const response = await fetch(url);
        const data = await response.json();
+       game.questions = [];
        game.questions = data.results.map((question, index) => {
            const correct = question.correct_answer;
            const options = [...question.incorrect_answers, correct];
@@ -176,27 +178,22 @@ const controller = ((dataCtrl, UIctrl)=> {
     }
 
     const checkAnswer = (e) => {
-        let userAnswer = e.target;
-        let currentQuestion = game.questions[answersCount];
-        if (!currentQuestion.answered) {
-            if (userAnswer.textContent === currentQuestion.answer) {
-                userAnswer.classList.add(DOM.correct);
+        const userAnswer = e.target;
+        const currentQuestion = game.questions[answersCount];
+        if (!currentQuestion.answered && userAnswer.id.length > 7) {
+            const correctAnswerID = `answer-${currentQuestion.choices.indexOf(currentQuestion.answer)}`;
+            const correctAnswer = document.getElementById(correctAnswerID); 
+            correctAnswer.classList.add(DOM.correct);
+
+            if (correctAnswerID === userAnswer.id) {
                 dataCtrl.addScore();
                 UIctrl.setScore(score, game);
-                currentQuestion.answered = true;
             } else {
                 userAnswer.classList.add(DOM.wrong);
-                for (let i = 0; i<game.questions.length; i++) {
-                    let correctAnswer = document.getElementById(`answer-${i}`); 
-                    if (currentQuestion.answer === correctAnswer.textContent ) {
-                        correctAnswer.classList.add(DOM.correct);
-                        break;
-                    }
-                }
-                currentQuestion.answered = true;
             }
+            currentQuestion.answered = true;
+            nextButton();
         }
-        nextButton();
     }
     const nextQuestion = () => {
         answersCount++;
@@ -214,6 +211,7 @@ const controller = ((dataCtrl, UIctrl)=> {
     const resetGame = () => {
         answersCount = 0;
         game.score = 0;
+
         final.classList.add(DOM.hide);
         let span = document.getElementById('before-score');
         if (span !== null) {
@@ -239,6 +237,7 @@ const controller = ((dataCtrl, UIctrl)=> {
         span.className = 'before-score';
         span.id = 'before-score';
         score.parentNode.insertBefore(span, score);
+
         btnStart.classList.remove(DOM.hide);
     }
 
