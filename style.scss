@@ -48,7 +48,7 @@ body {
     
     .game-box {
         background-color: $color2;
-        // width: 80%;
+        max-width: 700px;
         padding: 50px;
         @include centerThings();
 
@@ -88,10 +88,16 @@ body {
                 margin-top: 0;
             }
 
-                .question-number {
-                    font-size: 1.5em;
-                    color: $color5;
-                }
+            .question-number {
+                font-size: 1.5em;
+                color: $color5;
+            }
+
+            .loading {
+                font-size: 4rem;
+                text-transform: capitalize;
+
+            }
         }
         .answers {
             @include centerThings();
@@ -131,10 +137,8 @@ body {
         }
 
         @media (max-width: 500px) {
-                // height: 100%;
                 width: 100%;
                 padding: 30px 10px;
-
                 .question {
                     font-size: 0.8rem;
                 }

@@ -34,6 +34,7 @@ body {
 }
 .container .game-box {
   background-color: #424040;
+  max-width: 700px;
   padding: 50px;
   display: flex;
   justify-content: center;
@@ -73,6 +74,10 @@ body {
 .container .game-box .question .question-number {
   font-size: 1.5em;
   color: #f39a83;
+}
+.container .game-box .question .loading {
+  font-size: 4rem;
+  text-transform: capitalize;
 }
 .container .game-box .answers {
   display: flex;

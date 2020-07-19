@@ -97,6 +97,7 @@ const UIController = (()=> {
         final: 'final',
         category: 'category',
         nextBtnBox: 'next-button-box',
+        loading: 'loading...',
 
     }
 
@@ -115,6 +116,10 @@ const UIController = (()=> {
                 choicesHTML.innerHTML += `<button class="answer" id="answer-${choice}">${question.choices[choice]}</button>`;
             }
 
+         },
+
+         renderLoading: (questionHTML, loadingText) => {
+             questionHTML.innerHTML = `<span class="loading">${loadingText}</span>`;
          },
 
          renderCategory: (categoryHTML, category) => {
@@ -217,9 +222,9 @@ const controller = ((dataCtrl, UIctrl)=> {
     }
 
     const resetGame = () => {
+        UIctrl.renderLoading(question, DOM.loading);
         answersCount = 0;
         game.score = 0;
-
         final.classList.add(DOM.hide);
         let span = document.getElementById('before-score');
         if (span !== null) {
