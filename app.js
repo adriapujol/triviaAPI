@@ -22,10 +22,10 @@ const dataController = (()=> {
     }
     
    //GET API QUESTIONS
-   
-   const getQuestions = async () => {
+
+   const getQuestions = async (displayQuestions) => {
        const numQuestions = 10;
-       const url = `https://opentdb.com/api.php?amount=${numQuestions}`;
+       const url = `https://opentdb.com/api.php?amount=${numQuestions}&difficulty=medium`;
        const response = await fetch(url);
        const data = await response.json();
        game.questions = [];
@@ -43,6 +43,7 @@ const dataController = (()=> {
            )
 
        });
+       displayQuestions();
    }
 
 
@@ -66,7 +67,7 @@ const dataController = (()=> {
 
         getGame: () => game,
 
-        getQuestions: () => getQuestions(),
+        getQuestions: (displayQuestions) => getQuestions(displayQuestions),
 
     }
 
@@ -157,7 +158,8 @@ const controller = ((dataCtrl, UIctrl)=> {
 
     const startGame = () => {
         //Start game
-        dataCtrl.getQuestions();
+
+
         btnStart.addEventListener('click', renderGame);
         choices.addEventListener('click', checkAnswer);
         btnNext.addEventListener('click', nextQuestion);
@@ -167,11 +169,11 @@ const controller = ((dataCtrl, UIctrl)=> {
     //
     const renderGame = () => {
         resetGame();
+        dataCtrl.getQuestions(displayQuestion);
         btnStart.classList.add(DOM.hide);
         gameBox.classList.remove(DOM.hide);
         nextBtnBox.classList.remove(DOM.hide);
         UIctrl.setScore(score, game);
-        displayQuestion();
     }
 
 
@@ -184,6 +186,8 @@ const controller = ((dataCtrl, UIctrl)=> {
     const checkAnswer = (e) => {
         const userAnswer = e.target;
         const currentQuestion = game.questions[answersCount];
+
+        //Checks if id is from a choice and if question hasn't been answered
         if (!currentQuestion.answered && userAnswer.id.length > 7) {
             const correctAnswerID = `answer-${currentQuestion.choices.indexOf(currentQuestion.answer)}`;
             const correctAnswer = document.getElementById(correctAnswerID); 
