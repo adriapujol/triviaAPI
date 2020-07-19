@@ -30,7 +30,7 @@ body {
 
 
 .container {
-    height: 100vh;
+    min-height: 100vh;
     background-color: $color1;
     @include centerThings();   
     
@@ -111,7 +111,7 @@ body {
 
                 @media not all and (pointer: coarse) {
                     &:hover {
-                        background-color: $color5;
+                        border: 7px solid $score;
                     }
                 }
             
